@@ -1,0 +1,41 @@
+
+        <div id="menu-box-dsb" class="warning ">
+            <div >
+                <img id="admimg" class="rounded" src="assets/3135768.png" alt="...">
+            </div>
+            <div id="usrole" class="roboto-condensed-valemia-t">
+                <div>{{nombre}}</div>
+                <div >
+                    
+                    <div *ngIf="rol == '1'">Admin</div>
+                    <div *ngIf="rol == '2'">Cliente</div>
+                  
+                </div>
+                
+            </div>
+            
+            <div id="menu-opts" class="roboto-condensed-valemia">
+                <div routerLink="/dashboard" class="menu-items tx-zoom">
+                    <img class="icon" src="assets/an-datos.png" alt="">Dashboard
+                </div>
+                <div routerLink="/misdatos" class="menu-items tx-zoom">
+                    <img class="icon" src="assets/usericon.png" alt="">Mis Datos
+                </div>
+                <div *ngIf="rol == '1'" routerLink="/usuarios" class="menu-items tx-zoom">
+                    <img class="icon" src="assets/usericon.png" alt="">Usuarios
+                </div>
+                <div *ngIf="rol == '1'" routerLink="/categorias" class="menu-items tx-zoom">
+                    <img class="icon" src="assets/tarea.png" alt="">Categorias
+                </div>
+                <div *ngIf="rol == '1'" routerLink="/productos" class="menu-items tx-zoom">
+                    <img class="icon" src="assets/diseno-de-producto.png" alt="">Productos
+                </div>
+                <div *ngIf="rol == '1'" routerLink="#" class="menu-items tx-zoom">
+                    <img class="icon" src="assets/servicios-medicos.png" alt="">Servicios
+                </div>
+                <div routerLink="/login" class="menu-items tx-zoom">
+                    <img class="icon" src="assets/cerrar-sesion.png" alt="" (click)="Cerrarsession()">Salir
+                </div>
+            </div>
+            
+        </div>

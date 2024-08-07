@@ -1,0 +1,150 @@
+<app-menu></app-menu>
+<div class="window">
+  
+ 
+  <div class="parsel roboto-condensed-valemia-t">Productos</div><app-btncollide></app-btncollide>
+
+  <div class="window-table ">
+      
+      
+    <!-- Button trigger modal -->
+    <div class="linemodal">
+    <div class="btnadd" (click)="AbrirModal()">
+      +
+    </div>
+
+        
+  
+
+  <!-- Modal -->
+  <div class="modal fade card-img-top" id="modalNuevo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Productos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+  
+  
+          <div class="form-group">
+            <label for="estado">Categoria</label>
+            <select class="form-control" id="cod_cat" [(ngModel)]="cod_cat">
+              <option value="">Seleccionar -</option>
+                <ng-container  *ngFor="let item of datoscategorias">
+                  <option value="{{item.cod_cat}}" *ngIf="item.estado == '1'">{{item.nombre}}</option>
+                </ng-container>
+                
+        </select>
+        </div>
+          
+        <div class="form-group">
+          <div class="form-group">
+            <label for="imagen">Imagen</label>
+            <input type="text" class="form-control" id="imagen" [(ngModel)] ="imagen">
+        </div>
+
+          <div class="form-group">
+            <label for="codigo">Codigo de producto</label>
+            <input type="email" class="form-control" id="codigo" [(ngModel)]="cod_prod" [disabled]="Idseleccionado != ''">  
+          </div>
+  
+          <div class="form-group">
+            <label for="nombre">Nombre de producto</label>
+            <input type="email" class="form-control" id="nombre" [(ngModel)]="nombre">
+          </div>
+  
+          <div class="form-group">
+            <label for="nombre">Precio</label>
+            <input type="email" class="form-control" id="precio" [(ngModel)]="precio">
+          </div>
+
+          <div class="form-group">
+            <label for="Color">Color</label>
+            <input type="color" class="form-control" id="Color" [(ngModel)] ="color" placeholder="#ebebeb">
+          </div>
+          
+          <div class="form-group">
+            <label for="color">color</label>
+            <select class="form-control" id="color" [(ngModel)]="color">
+            <option value="#000000">Negro</option>
+            <option value="#FFFFFF">Blanco</option>
+            <option value="#FF0000">rojo</option>
+            <option value="#FFFF00">Amarillo</option>
+            <option value="#008000">verde</option>
+            <option value="#00FFFF">Azul</option>
+        </select>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <select class="form-control" id="estado" [(ngModel)]="estado">
+            <option value="0">Inactivo</option>
+            <option value="1">Activo</option>
+        </select>
+        </div>
+  
+  
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="Guardar()" *ngIf="Idseleccionado == ''">Guardar</button>
+          <button type="button" class="btn btn-primary" (click)="Actualizar()" *ngIf="Idseleccionado != ''">Actualizar</button>
+          <button type="button" class="btn btn-danger" (click)="Eliminar()" *ngIf="Idseleccionado != ''">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+
+
+
+  
+  <!-- tabla de datos -->
+  
+  
+  <div class="linetable">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Imagen</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <tr *ngFor="let item of datos" 
+          (click)="EditarId(item._id)" [ngStyle]="{'background': item.color}"
+          >
+            <td><img src="{{item.imagen}}" class="imagenproducto"></td>
+            <td>{{item.cod_prod}}</td>
+            <td>{{item.cod_cat}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.precio | currency}}</td>
+            <td>
+              <div *ngIf="item.estado == 1">Activo</div>
+              <div *ngIf="item.estado == 0">Inactivo</div>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>
+</div>
+
+
+
+
+
+
+   

@@ -1,0 +1,19 @@
+div#misdatosf {
+    margin: 60px;
+    width: 550px;
+    height: auto;
+    padding: 20px;
+    color: rgb(80, 80, 80);
+}
+
+@media (max-width:500px) {
+    div#misdatosf {
+        margin: 5px;
+        width: 500px;
+        height: auto;
+        padding: 20px;
+        color: rgb(80, 80, 80);
+    }
+
+
+}
