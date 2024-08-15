@@ -14,6 +14,7 @@ import { CategoriasComponent } from './component/categorias/categorias.component
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { MisdatosComponent } from './component/misdatos/misdatos.component';
 import { ActivarComponent } from './component/activar/activar.component';
+import { CarritoComponent } from './component/carrito/carrito.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent, pathMatch:"full"},
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path:"misdatos", component:MisdatosComponent, pathMatch:"full"},
   {path:"activar", component:ActivarComponent, pathMatch:"full"},
   {path:"activar/:correo/:codigo", component:ActivarComponent, pathMatch:"full"},
-  {path:"productos", component:ProductosComponent, pathMatch:"full"}
+  {path:"productos", component:ProductosComponent, pathMatch:"full"},
+  {path:"carrito", component:CarritoComponent, pathMatch:"full"}
 ];
 
 @NgModule({

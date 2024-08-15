@@ -17,7 +17,9 @@
             {{item.nombre}}
             <div class="col-12 text-muted font-weight-normal mx-auto">{{item.precio | currency}}</div>
           </div>
-          <div class="btn btn-outline-warning mx-auto mb-3 col-8 roboto-condensed-valemia-t" (click)="Comprar()">comprar</div>
+          <div class="nav-item active" >
+            <a  class="nav-link anton-regular" class="btn btn-warning" (click)="addToCart(item)"> Compras</a>
+          </div>
           </div>
         </div>
 

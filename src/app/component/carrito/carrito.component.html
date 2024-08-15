@@ -1,0 +1,38 @@
+
+<app-header></app-header>
+
+
+<div class="windowsell">
+  
+ 
+  <div class="parsel roboto-condensed-valemia-t">Carrito de compras</div>
+
+  <div class="window-table ">
+      
+    <div class="linetable">
+      <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Codigo</th>
+              <th scope="col">Nombre Producto</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+        
+            <tr *ngFor="let item of productosNGRX" >
+              <td>{{item.cod_prod}}</td>
+              <td>{{item.nombre}}</td>
+              <td>{{item.precio | currency}}</td>
+              <button type="button" class="btn btn-danger" (click)="deleteProduct(item.cod_prod, item.precio)">Eliminar</button>
+            </tr>
+          </tbody>
+          <tfoot>
+            <h3> Total Pedido: {{totalNGRX | currency}} </h3>
+          </tfoot>
+        </table>
+      <!-- <button class="btn btn-warning" (click)="vaciarcarrito()">Vaciar carrito</button> -->
+      </div>
+</div>
+</div>
+

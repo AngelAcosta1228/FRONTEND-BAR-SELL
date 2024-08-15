@@ -1,4 +1,5 @@
 
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom anton-sm fixed-top">
     <a class="navbar-brand anton-regular " routerLink="/">Bar Sell</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,6 +15,7 @@
       <li class="nav-item">
         <a class="nav-link anton-regular" routerLink="/about_us">Nosotros</a>
       </li>
+      
       <li class="nav-item mr-auto">
         <a class="nav-link anton-regular" routerLink="/location">Ubicacion</a>
       </li>
@@ -28,11 +30,16 @@
           </div> -->
         
       </ul>
-
       <div class="nav-item active" >
         <a  class="nav-link anton-regular" routerLink="/login">Login</a>
       </div>
       
+      <div id="carrito">
+      <div class="nav-item active" >
+        <a  class="nav-link anton-regular" routerLink="/carrito"><img src="../../../assets/CARRITO.png"> Compras</a>
+      </div>
+    </div>
+    <app-notifications></app-notifications>
       <div class="form-inline my-2 my-lg-0">
         <input id="search" class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-warning my-sm-0  rounded-pill nbtnoff" type="submit">Buscar</button>

@@ -26,6 +26,14 @@ import { MisdatosComponent } from './component/misdatos/misdatos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BtncollideComponent } from './component/menu/btncollide/btncollide.component';
 import { ActivarComponent } from './component/activar/activar.component';
+import { StoreModule } from '@ngrx/store';
+import { CarritoComponent } from './component/carrito/carrito.component';
+import { carritoReducer } from './NGRX/carrito.reducer';
+
+//ngrx 
+import { provideState, provideStore } from '@ngrx/store';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +57,8 @@ import { ActivarComponent } from './component/activar/activar.component';
     MisdatosComponent,
     BtncollideComponent,
     ActivarComponent,
+    CarritoComponent,
+    NotificationsComponent
 
   ],
   imports: [
@@ -56,12 +66,16 @@ import { ActivarComponent } from './component/activar/activar.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({carritoReducer}),
   ],
-  providers: [{
+  providers: [
+    provideStore(),
+    provideState({ name: 'cartState', reducer: carritoReducer }),
+    {
     provide:HTTP_INTERCEPTORS,
     useClass: InterceptorService,
-    multi:true
+    multi:true,
   }],
   bootstrap: [AppComponent]
 })

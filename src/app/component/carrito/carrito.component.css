@@ -1,0 +1,11 @@
+.windowsell{
+    margin-top: 77px;
+    margin-left: 100px;
+    margin-right: 10px;
+    width: calc(100% - 235px);
+    float: left;
+    height: calc(100vh - 30px);
+    border: solid;
+    border-radius: 15px;
+    
+  }

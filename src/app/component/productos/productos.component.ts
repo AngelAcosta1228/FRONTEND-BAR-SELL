@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { PeticionService } from '../../servicios/peticion.service';
 
 
-
 declare let $:any
 declare let Swal:any
 
@@ -13,13 +12,13 @@ declare let Swal:any
 })
 export class ProductosComponent {
 
-  constructor (private peticion:PeticionService){}
-
+  constructor( private peticion:PeticionService) {}
+  
   ngOnInit(): void {
     this.cargarTodascategorias()
     this.cargarTodas()
   }
-
+  
   cod_prod:string = ""
   cod_cat:string = ""
   precio:Number= 0
@@ -30,8 +29,8 @@ export class ProductosComponent {
   datos:any[] = []
   Idseleccionado:String =""
   datoscategorias:any[] = []
-
-
+  
+  
   cargarTodascategorias(){
 
     let post = {
@@ -210,6 +209,4 @@ export class ProductosComponent {
       }
     })
   }
-
-
 }

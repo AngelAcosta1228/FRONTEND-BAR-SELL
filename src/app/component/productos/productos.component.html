@@ -12,6 +12,38 @@
     <div class="btnadd" (click)="AbrirModal()">
       +
     </div>
+    <div class="linetable">
+      <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Imagen</th>
+              <th scope="col">Codigo</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+  
+            <tr *ngFor="let item of datos" 
+            (click)="EditarId(item._id)" [ngStyle]="{'background': item.color}"
+            >
+              <td><img src="{{item.imagen}}" class="imagenproducto"></td>
+              <td>{{item.cod_prod}}</td>
+              <td>{{item.cod_cat}}</td>
+              <td>{{item.nombre}}</td>
+              <td>{{item.precio | currency}}</td>
+              <td>
+                <div *ngIf="item.estado == 1">Activo</div>
+                <div *ngIf="item.estado == 0">Inactivo</div>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+  </div>
 
         
   
@@ -95,6 +127,7 @@
           <button type="button" class="btn btn-primary" (click)="Guardar()" *ngIf="Idseleccionado == ''">Guardar</button>
           <button type="button" class="btn btn-primary" (click)="Actualizar()" *ngIf="Idseleccionado != ''">Actualizar</button>
           <button type="button" class="btn btn-danger" (click)="Eliminar()" *ngIf="Idseleccionado != ''">Eliminar</button>
+          <!-- <button type="button" class="btn btn-danger" (click)="addToCart()" *ngIf="Idseleccionado != ''">addToCart</button> -->
         </div>
       </div>
     </div>
@@ -108,38 +141,7 @@
   <!-- tabla de datos -->
   
   
-  <div class="linetable">
-    <table class="table table-hover">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Imagen</th>
-            <th scope="col">Codigo</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-
-
-          <tr *ngFor="let item of datos" 
-          (click)="EditarId(item._id)" [ngStyle]="{'background': item.color}"
-          >
-            <td><img src="{{item.imagen}}" class="imagenproducto"></td>
-            <td>{{item.cod_prod}}</td>
-            <td>{{item.cod_cat}}</td>
-            <td>{{item.nombre}}</td>
-            <td>{{item.precio | currency}}</td>
-            <td>
-              <div *ngIf="item.estado == 1">Activo</div>
-              <div *ngIf="item.estado == 0">Inactivo</div>
-            </td>
-          </tr>
-          
-        </tbody>
-      </table>
-</div>
+  
 </div>
 
 
