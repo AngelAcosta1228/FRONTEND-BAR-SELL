@@ -3,7 +3,8 @@ import { Store, select } from '@ngrx/store';
 import { ItemCarritoState } from 'src/app/component/bodycomponents/cards/itemCarrito.state';
 import { AppState } from 'src/app/app.state';
 import { ItemCarrito } from 'src/app/component/bodycomponents/cards/itemCarrito';
-import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
+import { selectCartItems, selectCartTotalAmount, selectCartTotalQuantity } from 'src/app/NGRX/cart.selectors';
 
 
 @Component({
@@ -12,8 +13,14 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent {
-constructor(private store: Store<AppState>){}
-
+  products$: Observable<ItemCarrito[] | null>;
+  grandTotal$: Observable<number>;
+  totalQuantity$: Observable<number> | null;
+constructor(private store: Store<AppState>){
+  this.products$ = this.store.select(selectCartItems);
+    this.grandTotal$ = this.store.select(selectCartTotalAmount);
+    this.totalQuantity$ = this.store.select(selectCartTotalQuantity);
+}
 productosNGRX : ItemCarrito[] = []
 
 getProduct(){

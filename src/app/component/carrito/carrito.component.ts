@@ -4,6 +4,8 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 import { ItemCarritoState } from '../bodycomponents/cards/itemCarrito.state';
 import { removeProduct } from 'src/app/NGRX/carrito.actions';
+import { Observable } from 'rxjs';
+import { selectCartItems, selectCartTotalAmount } from 'src/app/NGRX/cart.selectors';
 declare let $:any
 declare let Swal:any
 @Component({
@@ -12,7 +14,12 @@ declare let Swal:any
   styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent {
-  constructor(private store: Store<AppState>){}
+  products$: Observable<ItemCarrito[] | null>;
+  grandTotal$: Observable<number>;
+  constructor(private store: Store<AppState>){
+    this.products$ = this.store.select(selectCartItems);
+    this.grandTotal$ = this.store.select(selectCartTotalAmount);
+  }
 
 productosNGRX : ItemCarrito[] = []
 totalNGRX: number = 0

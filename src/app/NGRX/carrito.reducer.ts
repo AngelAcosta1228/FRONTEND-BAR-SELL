@@ -22,4 +22,27 @@ on(removeProduct,(state, {productId, precio}) =>({
     grandTotal: state.grandTotal - precio
     })),
 
+  //   on(addProduct, (state, { product }) => {
+  //   const existingItem = state.products.find(i => i.cod_prod === product.cod_prod);
+
+  //   let updatedItems;
+
+  //   if (existingItem) {
+  //     updatedItems = state.products.map(i =>
+  //       i.cod_prod === product.cod_prod
+  //         ? { ...i, quantity: i.quantity + product.quantity }
+  //         : i
+  //     );
+  //   } else {
+  //     updatedItems = [...state.products, product];
+  //   }
+
+  //   const updatedTotalAmount = state.grandTotal + product.precio * product.quantity;
+
+  //   return {
+  //     ...state,
+  //     products: updatedItems,
+  //     totalAmount: updatedTotalAmount
+  //   };
+  // }),
 )
