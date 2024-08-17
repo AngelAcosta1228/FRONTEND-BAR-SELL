@@ -12,10 +12,10 @@ declare let Swal:any
   styleUrls: ['./misdatos.component.css']
 })
 export class MisdatosComponent implements OnInit{
+  
 
 
   ngOnInit(): void {
-    this.cargarTodas
     this.cargarTodas()
   }
   
@@ -28,53 +28,71 @@ export class MisdatosComponent implements OnInit{
   direccion: any = ""
   telefono:any = ""
   estado:string = '0'
-  data:any[] = []
+  usuarios:any[] = []
   Idusuario:String =""
   ciudad:String = ""
+  confirmpassword: any;
   
   cargarTodas(){
 
     let post = {
-      host:this.peticion.urlHost,
+      Host: this.peticion.urlHost,
       path:"/usuarios/misdatos",
       payload:{
       }
     }
-  this.peticion.Post(post.host+post.path, post.payload).then(
-    (res:any) => {
-      console.log(res)
-
-      this.nombre = res.data[0].nombre
-      this.email = res.data[0].email
-      this.estado = res.data[0].estado
-      this.direccion = res.data[0].direccion
-      this.telefono = res.data[0].telefono
-      this.rol = res.data[0].rol
-      this.Idusuario = res.data._id
-
-    }
+    this.peticion.Post(post.Host+post.path, post.payload).then(
+      (res:any) => {
+        console.log(res)
+        this.nombre = res.usuarios[0].nombre
+          this.email = res.usuarios[0].email
+          this.direccion = res.usuarios[0].direccion
+          this.ciudad = res.usuarios[0].ciudad
+          this.telefono=res.usuarios[0].telefono
+          this.rol= res.usuarios[0].rol
+          this.estado = res.usuarios[0].estado
+      }
   )}
 
  ActualizarDatos(){
-  
-//   let post = {
-//     host:this.peticion.urlHost,
-//     path:"/usuarios/actualizardatos",
-//     payload{
-//       nombre:this.nombre,
+  if(this.password != this.confirmpassword){
+    Swal.fire({
+      title: "Ouch!",
+      text: "Verifica el password, no coincide",
+      icon: "error"
+    });
+  }else {
+    let post = {
+      Host: this.peticion.urlHost,
+      path:"/usuarios/actualizardatos",
+      payload:{
+        email:this.email,
+        telefono:this.telefono, 
+        direccion:this.direccion,
+        ciudad:this.ciudad,
+        password:this.password
+      }
+    }
+    this.peticion.Post(post.Host+post.path, post.payload).then(
+      (res:any) => {
+        
+        if(res.state == true){
+          Swal.fire({
+            title: "Que bien!",
+            text: res.mensaje,
+            icon: "success"
+          });
+        }else{
+          Swal.fire({
+            title: "Ouch!",
+            text: res.mensaje,
+            icon: "error"
+          });
+        }
+      }
+    )
 
-//     }
-    
-//   }
-// this.peticion.Post(post.host+post.path, post.payload).then(
-//   (res:any) => {
-//     console.log(res)
-//     this.email = res.data[0].email
-//     this.nombre = res.data[0].nombre
-//     this.estado = res.data[0].estado
-//     $('#modalNuevo').modal('show')
-//   }
-// )
-
+  }
 }
 }
+

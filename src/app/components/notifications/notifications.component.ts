@@ -13,13 +13,13 @@ import { selectCartItems, selectCartTotalAmount, selectCartTotalQuantity } from 
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent {
-  products$: Observable<ItemCarrito[] | null>;
-  grandTotal$: Observable<number>;
-  totalQuantity$: Observable<number> | null;
+  // products$: Observable<ItemCarrito[] | null>;
+  // grandTotal$: Observable<number>;
+  // totalQuantity$: Observable<number> | null;
 constructor(private store: Store<AppState>){
-  this.products$ = this.store.select(selectCartItems);
-    this.grandTotal$ = this.store.select(selectCartTotalAmount);
-    this.totalQuantity$ = this.store.select(selectCartTotalQuantity);
+  // this.products$ = this.store.select(selectCartItems);
+  //   this.grandTotal$ = this.store.select(selectCartTotalAmount);
+  //   this.totalQuantity$ = this.store.select(selectCartTotalQuantity);
 }
 productosNGRX : ItemCarrito[] = []
 

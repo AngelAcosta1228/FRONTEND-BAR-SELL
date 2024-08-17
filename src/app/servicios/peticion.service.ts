@@ -27,8 +27,6 @@ export class PeticionService {
               title: "Error",
               text: res.mensaje,
             });
-
-
           }
           resolve(res)
         }
